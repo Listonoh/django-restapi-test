@@ -10,10 +10,10 @@ def get_page_obj_from_result(request_result, page_number):
     current_page = int(request_result.headers["x-pagination-current-page"])
     page_count = int(request_result.headers["x-pagination-page-count"])
     per_page = int(request_result.headers["x-pagination-per-page"])
-    print(current_page, page_count, per_page)
+    # print(current_page, page_count, per_page)
     extended_result = [None] * (current_page-1)*per_page + \
         request_result.json() + [None] * (page_count - current_page)*per_page
-    print(extended_result)
+    # print(extended_result)
     p = Paginator(extended_result, per_page)
     return p.get_page(page_number)
 
