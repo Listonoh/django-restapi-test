@@ -1,3 +1,5 @@
 /.pytest_cache
 /.vscode
 /Miniconda3-latest-Linux-x86_64.sh
+*.pyc
+/__pycache__
