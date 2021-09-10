@@ -4,7 +4,7 @@ from django.shortcuts import render
 from requests.exceptions import ConnectionError, RequestException
 
 
-BASE_ERROR_MESSAGE = 'Could not connect to your box because {error_reason}'
+BASE_ERROR_MESSAGE = 'Could not connect because {error_reason}'
 
 
 def handle_view_exception(func):
