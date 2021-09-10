@@ -10,7 +10,7 @@
                 <h5 class="card-title">{{ organization.name }}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">ICO: {{ organization.ico }}</h6>
                 <p class="card-text">Description: {{ organization.description }}</p>
-                <a href="{{ organization.url }}" class="card-link">Odkaz na stranku</a>
+                <a href="{{ organization.url }}" class="card-link">{{ organization.url }}</a>
                 </div>
             </div>
         </div>
@@ -18,8 +18,9 @@
         {% else %}
         <p>No organizations are available.</p>
         {% endif %}
+
         <!--Pagination-->
-        <nav aria-label="Page navigation example">
+        <nav aria-label="Page navigation">
             <ul class="pagination justify-content-center">
                 {% if organizations.has_previous %}
                 <li class="page-item">
