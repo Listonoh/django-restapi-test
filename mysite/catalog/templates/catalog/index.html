@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 
 
+
+
+
 {% block content%}
     {% if organizations %}
         {% for organization in organizations %}
@@ -24,7 +27,7 @@
             <ul class="pagination justify-content-center">
                 {% if organizations.has_previous %}
                 <li class="page-item">
-                    <a class="page-link" href="?page={{ organizations.previous_page_number }}">Previous</a>
+                    <a class="page-link" href="?page={{ organizations.previous_page_number }}{% firstof per_page '' %}">Previous</a>
                 </li>
                 {% else %}
                 <li class="page-item disabled">
@@ -39,12 +42,12 @@
                     </span>
                     </li>
                 {% else %}
-                    <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                    <li class="page-item"><a class="page-link" href="?page={{ i }}{% firstof per_page '' %}">{{ i }}</a></li>
                 {% endif %}
                 {% endfor %}
                 {% if organizations.has_next %}
                 <li class="page-item">
-                    <a class="page-link" href="?page={{ organizations.next_page_number }}">Next</a>
+                    <a class="page-link" href="?page={{ organizations.next_page_number }}{% firstof per_page '' %}">Next</a>
                 </li>
                 {% else %}
                 <li class="page-item disabled">

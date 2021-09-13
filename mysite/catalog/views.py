@@ -36,5 +36,6 @@ def index(request):
         raise Http404()
     organizations = get_page_obj_from_result(result, page_number)
 
-    context = {"organizations": organizations, "per_page": per_page}
+    context = {"organizations": organizations,
+               "per_page": "&per-page=" + str(per_page)}
     return render(request, 'catalog/index.html', context)
