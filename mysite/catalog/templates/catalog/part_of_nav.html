@@ -1,0 +1,17 @@
+<li class="page-item 
+    {% if not disabled %}
+        disabled
+    {% endif %}
+    {% if active == name %}
+        active
+    {% endif %}">
+    
+    <a class="page-link" 
+        {% if not disabled %}
+            href='#' tabindex='-1' aria-disabled='true'
+        {% else %}
+            href='?page={{ page_number }}{{ per_page }}'
+        {% endif %}
+    >
+    {{ name }}</a>
+</li>

@@ -1,33 +1,13 @@
 <nav aria-label="Page navigation">
     <ul class="pagination justify-content-center">
-        {% if organizations.has_previous %}
-        <li class="page-item">
-            <a class="page-link" href="?page={{ organizations.previous_page_number }}{{ per_page  }}">Previous</a>
-        </li>
-        {% else %}
-        <li class="page-item disabled">
-            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-        </li>
-        {% endif %}
+
+        {% include "catalog/part_of_nav.html" with name="Previous" page_number=organizations.number|add:-1  per_page=per_page disabled=organizations.has_previous active=False %}
+
         {% for i in organizations.paginator.page_range %}
-        {% if organizations.number == i %}
-            <li class="page-item active" aria-current="page">
-            <span class="page-link">
-                {{ i }}
-            </span>
-            </li>
-        {% else %}
-            <li class="page-item"><a class="page-link" href="?page={{ i }}{{ per_page }}">{{ i }}</a></li>
-        {% endif %}
+            {% include "catalog/part_of_nav.html" with name=i page_number=i  per_page=per_page disabled=True active=organizations.number %}
         {% endfor %}
-        {% if organizations.has_next %}
-        <li class="page-item">
-            <a class="page-link" href="?page={{ organizations.next_page_number }}{{ per_page }}">Next</a>
-        </li>
-        {% else %}
-        <li class="page-item disabled">
-            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Next</a>
-        </li>
-        {% endif %}
+        
+        {% include "catalog/part_of_nav.html" with name="Next" page_number=organizations.number|add:1  per_page=per_page disabled=organizations.has_next active=False %}
     </ul>
 </nav>
+
